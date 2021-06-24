@@ -67,12 +67,14 @@ public class RabbitMqManager {
     }
 
     // declareQueue
-    public void declareQueue(String queueName, String queueKey) {
+    public boolean declareQueue(String queueName, String queueKey) {
         try {
             channel.queueDeclare(queueName, true, false, false, null);
             channel.queueBind(queueName, "amq.direct", queueKey);
+            return true;
         } catch (Exception e) {
             e.printStackTrace();
+            return false;
         }
     }
 

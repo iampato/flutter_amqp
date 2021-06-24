@@ -68,7 +68,14 @@ public class FlutterAmqpPlugin implements FlutterPlugin, MethodCallHandler {
             case "consumerQueue":
                 String queueName = call.argument("queue_name");
                 String queueKey = call.argument("queue_key");
-                rabbitMqManager.consumerQueue(queueName, queueKey, result);
+                // first declare queue
+                boolean success = rabbitMqManager.declareQueue(queueName,queueKey);
+                if(success) {
+                    // Then setup consumer
+                    rabbitMqManager.consumerQueue(queueName, queueKey, result);
+                }else{
+                    result.success(false);
+                }
                 break;
             case "disconnect":
                 rabbitMqManager.disConnect(result);
