@@ -29,7 +29,9 @@ public class RabbitMqManager {
         this.handler = handler;
     }
 
-    // connect
+    /// connect
+    /// Params -> `url` the rabbitmq connection uri and `result` for sending
+    /// events bac to the flutter world via method channels
     public void connect(String url, @NonNull MethodChannel.Result result) {
         ConnectionFactory factory = new ConnectionFactory();
         try {
