@@ -2,6 +2,9 @@
 
 A new Flutter project.
 
+## Why this project
+Flutter AMQP, so why create a new one, I need to use AMQP but must have the heartbeat feature that the dart version lacks and native libraries already have this feature
+
 ## Getting Started
 
 This project is a starting point for a Flutter
